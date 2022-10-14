@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://clnb8elvmg7fj"]
 
 [ext_resource type="Script" path="res://obstacle.gd" id="1_dg81i"]
-[ext_resource type="Texture2D" uid="uid://c54b1y0k3mdaa" path="res://icon.svg" id="2_qrq6i"]
+[ext_resource type="Texture2D" uid="uid://n36i08uf8p57" path="res://assets/obstacle.png" id="2_4jnli"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1j1d4"]
-radius = 60.92
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g88n6"]
+height = 99.9922
 
 [node name="PathFollow2d" type="PathFollow2D"]
 position = Vector2(88, 79)
@@ -14,10 +14,12 @@ script = ExtResource("1_dg81i")
 speed = null
 
 [node name="Sprite2d" type="Sprite2D" parent="."]
-texture = ExtResource("2_qrq6i")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_4jnli")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="RigidBody2D" type="CharacterBody2D" parent="."]
 disable_mode = 2
+motion_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("CircleShape2D_1j1d4")
+shape = SubResource("CapsuleShape2D_g88n6")

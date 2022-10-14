@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Diablesse
 
-const SPEED = 300.0
+const SPEED = 150.0
 const JUMP_VELOCITY = -400.0
 
 var speed_modifier = 1.0
@@ -37,6 +37,6 @@ func _physics_process(delta):
 
 func set_area(woods:bool):
 	if woods:
-		speed_modifier = 0.5
+		speed_modifier = 0.3
 	else:
 		speed_modifier = 1
