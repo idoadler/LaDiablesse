@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://clnb8elvmg7fj"]
+
+[ext_resource type="Script" path="res://obstacle.gd" id="1_dg81i"]
+[ext_resource type="Texture2D" uid="uid://c54b1y0k3mdaa" path="res://icon.svg" id="2_qrq6i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1j1d4"]
+radius = 60.92
+
+[node name="PathFollow2d" type="PathFollow2D"]
+position = Vector2(88, 79)
+rotation = 0.296241
+loop = false
+script = ExtResource("1_dg81i")
+speed = null
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+texture = ExtResource("2_qrq6i")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+disable_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_1j1d4")

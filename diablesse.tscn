@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdte5vr0nxjlk"]
+
+[ext_resource type="Script" path="res://diablesse.gd" id="1_x0oqe"]
+[ext_resource type="Texture2D" uid="uid://c54b1y0k3mdaa" path="res://icon.svg" id="2_kvqhg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mblvh"]
+radius = 66.58
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_x0oqe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kvqhg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mblvh")

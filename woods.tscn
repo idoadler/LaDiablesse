@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dip35qy60ndtk"]
+
+[ext_resource type="Script" path="res://woods.gd" id="1_7iqrc"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_7iqrc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(357, 130)
+polygon = PackedVector2Array(20, 16, 371, 33, 300, 292, 144, 379, -19, 278)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

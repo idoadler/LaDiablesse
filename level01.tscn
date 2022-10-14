@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmn1ss7cx6gyo"]
+
+[ext_resource type="PackedScene" uid="uid://clnb8elvmg7fj" path="res://obstacle.tscn" id="1_0b8mp"]
+[ext_resource type="PackedScene" uid="uid://dip35qy60ndtk" path="res://woods.tscn" id="2_h73is"]
+[ext_resource type="PackedScene" uid="uid://cdte5vr0nxjlk" path="res://diablesse.tscn" id="2_hdb3k"]
+
+[sub_resource type="Curve2D" id="Curve2D_3rslp"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 88, 79, 0, 0, 0, 0, 336, 175, 0, 0, 0, 0, 620, 109, 0, 0, 0, 0, 665, 318, 0, 0, 0, 0, 574, 464, 0, 0, 0, 0, 332, 416, 0, 0, 0, 0, 125, 212)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_3iynq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 88, 79, 108.353, 73.0754, -108.353, -73.0754, -51, -197, 0, 0, 0, 0, -467, -109)
+}
+point_count = 3
+
+[node name="Node2d" type="Node2D"]
+
+[node name="Path2d" type="Path2D" parent="."]
+curve = SubResource("Curve2D_3rslp")
+
+[node name="PathFollow2d" parent="Path2d" instance=ExtResource("1_0b8mp")]
+rotation = 0.369335
+
+[node name="Path2d2" type="Path2D" parent="."]
+position = Vector2(928, 456)
+curve = SubResource("Curve2D_3iynq")
+
+[node name="PathFollow2d" parent="Path2d2" instance=ExtResource("1_0b8mp")]
+rotation = -1.7347
+
+[node name="Area2D" parent="." instance=ExtResource("2_h73is")]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_hdb3k")]
+disable_mode = 2
