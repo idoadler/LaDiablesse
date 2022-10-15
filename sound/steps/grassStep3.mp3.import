@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/grassStep3.mp3-dfca3e5ef415fdbd1e49318ed46f9da3.mp3str"
+
+[deps]
+
+source_file="res://sound/steps/grassStep3.mp3"
+dest_files=[ "res://.import/grassStep3.mp3-dfca3e5ef415fdbd1e49318ed46f9da3.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

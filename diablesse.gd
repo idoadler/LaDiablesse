@@ -1,29 +1,15 @@
-extends CharacterBody2D
+extends KinematicBody2D
 class_name Diablesse
 
 const SPEED = 150.0
 const JUMP_VELOCITY = -400.0
 
+onready var music:Music = $"../Music"
+
 var speed_modifier = 1.0
 var speed = 250
-
-#func get_input():
-#	# Detect up/down/left/right keystate and only move when pressed.
-#	velocity = Vector2()
-#	if Input.is_action_pressed('ui_right'):
-#		velocity.x += 1
-#	if Input.is_action_pressed('ui_left'):
-#		velocity.x -= 1
-#	if Input.is_action_pressed('ui_down'):
-#		velocity.y += 1
-#	if Input.is_action_pressed('ui_up'):
-#		velocity.y -= 1
-#	velocity = velocity.normalized() * speed
-#
-#func _physics_process(delta):
-#	get_input()
-#	move_and_collide(velocity * delta)
-
+var velocity = Vector2()
+var step_time = 0.0
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -33,9 +19,17 @@ func _physics_process(delta):
 		velocity = direction * SPEED * speed_modifier
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
-	move_and_slide()
+	move_and_slide(velocity)
+	if velocity.length() > 1:
+		step_time += delta
+		if step_time > 30 / velocity.length():
+			music.play_step()
+			step_time = 0
+	else:
+		step_time = 1
 
 func set_area(woods:bool):
+	music.on_grass = woods
 	if woods:
 		speed_modifier = 0.3
 	else:

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/onGrassHEAD.ogg-e578a5871adafe63b587fa937bd005b1.oggstr"
+
+[deps]
+
+source_file="res://sound/music/onGrassHEAD.ogg"
+dest_files=[ "res://.import/onGrassHEAD.ogg-e578a5871adafe63b587fa937bd005b1.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

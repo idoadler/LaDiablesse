@@ -1,25 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://clnb8elvmg7fj"]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource type="Script" path="res://obstacle.gd" id="1_dg81i"]
-[ext_resource type="Texture2D" uid="uid://n36i08uf8p57" path="res://assets/obstacle.png" id="2_4jnli"]
+[ext_resource path="res://Obstacle.gd" type="Script" id=1]
+[ext_resource path="res://assets/obstacle.png" type="Texture" id=2]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g88n6"]
-height = 99.9922
+[sub_resource type="CapsuleShape2D" id=1]
+height = 29.1598
 
-[node name="PathFollow2d" type="PathFollow2D"]
-position = Vector2(88, 79)
-rotation = 0.296241
+[node name="MovingObstacle" type="PathFollow2D"]
+position = Vector2( 39, 301 )
+rotation = -0.500674
 loop = false
-script = ExtResource("1_dg81i")
-speed = null
+script = ExtResource( 1 )
 
-[node name="Sprite2d" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_4jnli")
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
 
-[node name="RigidBody2D" type="CharacterBody2D" parent="."]
-disable_mode = 2
-motion_mode = 1
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("CapsuleShape2D_g88n6")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( -1.78779, 24.0999 )
+shape = SubResource( 1 )

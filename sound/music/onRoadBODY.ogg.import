@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/onRoadBODY.ogg-3934bd237e62d46677eddabf4b635a9b.oggstr"
+
+[deps]
+
+source_file="res://sound/music/onRoadBODY.ogg"
+dest_files=[ "res://.import/onRoadBODY.ogg-3934bd237e62d46677eddabf4b635a9b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

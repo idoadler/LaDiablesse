@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/roadStep2.mp3-2f2174e8f3af2b84b1b6b9e55da73518.mp3str"
+
+[deps]
+
+source_file="res://sound/steps/roadStep2.mp3"
+dest_files=[ "res://.import/roadStep2.mp3-2f2174e8f3af2b84b1b6b9e55da73518.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
