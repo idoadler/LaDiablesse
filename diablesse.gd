@@ -3,7 +3,7 @@ class_name Diablesse
 
 const SPEED = 350.0
 const JUMP_VELOCITY = -400.0
-const SEEN_DISTANCES = [50.0, 80.0, 100.0, 200.0]
+export var SEEN_DISTANCES = [50.0, 80.0, 140.0, 200.0]
 const SEEN_REFERENCE = 230.0
 
 onready var music:Music = $"../Music"
