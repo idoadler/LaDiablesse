@@ -1,122 +1,19 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/background01.png" type="Texture" id=1]
-[ext_resource path="res://Obstacle.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Target.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Diablesse.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Woods.gd" type="Script" id=5]
-[ext_resource path="res://Music.gd" type="Script" id=6]
-[ext_resource path="res://assets/texture_1.png" type="Texture" id=7]
-[ext_resource path="res://assets/woman_2.png" type="Texture" id=8]
-[ext_resource path="res://assets/light.png" type="Texture" id=9]
-[ext_resource path="res://assets/texture_night_1.png" type="Texture" id=10]
-
-[sub_resource type="CanvasItemMaterial" id=3]
-light_mode = 2
-
-[sub_resource type="Curve2D" id=1]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 39, 301, 0, 0, 0, 0, 456, 82, 0, 0, 0, 0, 786, 220, 0, 0, 0, 0, 1226, 410, 0, 0, 0, 0, 940, 630, 0, 0, 0, 0, 662, 720, 0, 0, 0, 0, 664, 868, 0, 0, 0, 0, 936, 974, 0, 0, 0, 0, 1100, 892, 0, 0, 0, 0, 1256, 788, 0, 0, 0, 0, 1372, 756, 0, 0, 0, 0, 1724, 640 )
-}
-
-[sub_resource type="Curve2D" id=2]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 826, 408, 0, 0, 0, 0, 969, 302, 0, 0, 0, 0, 1080, 176, 0, 0, 0, 0, 1226, 128, 0, 0, 0, 0, 1448, 171, 0, 0, 0, 0, 1554, 385, 0, 0, 0, 0, 1383, 637, 0, 0, 0, 0, 1015, 710, 0, 0, 0, 0, 866, 710, 0, 0, 0, 0, 919, 763, 0, 0, 0, 0, 702, 932, 0, 0, 0, 0, 367, 849, 0, 0, 0, 0, 138, 751, 0, 0, 0, 0, 33, 420 )
-}
+[ext_resource path="res://GoTo.gd" type="Script" id=1]
+[ext_resource path="res://assets/main_menu_2.png" type="Texture" id=2]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 973, 533 )
-scale = Vector2( 2.5, 2 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( -382.4, -262.5, 369.2, -261.5, 369.2, 268, -387.2, 271, -386.8, -262.5, -427.195, -277.053, -421.246, 326.345, 448.157, 305.098, 421.812, -325.495, -436.543, -322.945, -427.195, -277.053 )
-
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
-position = Vector2( 973, 533 )
-scale = Vector2( 2.5, 2 )
-texture = ExtResource( 1 )
+position = Vector2( 960, 540 )
+scale = Vector2( 2.67, 2.67 )
+texture = ExtResource( 2 )
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-margin_right = 1935.0
-margin_bottom = 1093.0
-rect_scale = Vector2( 3, 3 )
-texture = ExtResource( 10 )
-stretch_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="."]
-material = SubResource( 3 )
-margin_right = 1935.0
-margin_bottom = 1093.0
-rect_scale = Vector2( 3, 3 )
-texture = ExtResource( 7 )
-stretch_mode = 2
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 1731, 285 )
-rotation = 0.515589
-
-[node name="Target" parent="Node2D" instance=ExtResource( 3 )]
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Path2D" type="Path2D" parent="."]
-position = Vector2( 27, 125 )
-curve = SubResource( 1 )
-
-[node name="MovingObstacle" parent="Path2D" instance=ExtResource( 2 )]
-rotation = -0.483585
-
-[node name="Path2D2" type="Path2D" parent="."]
-position = Vector2( 11, -16 )
-curve = SubResource( 2 )
-
-[node name="MovingObstacle" parent="Path2D2" instance=ExtResource( 2 )]
-position = Vector2( 826, 408 )
-rotation = -0.637876
-speed = 130
-
-[node name="Sprite" parent="Path2D2/MovingObstacle/KinematicBody2D" index="1"]
-texture = ExtResource( 8 )
-
-[node name="Woods" type="Area2D" parent="."]
-script = ExtResource( 5 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Woods"]
-position = Vector2( 480, 730 )
-scale = Vector2( 1.94421, 1.91425 )
-polygon = PoolVector2Array( -238.657, 101.345, -99.7834, 10.448, -79.2095, 12.0152, -69.9512, -7.83597, -69.9512, -24.5527, -39.6047, -28.7319, 0.514343, -29.7767, 13.8874, -63.7326, 46.8056, -84.6285, 83.8386, -92.9869, 121.386, -97.1661, 162.534, -78.8821, 211.911, -48.0606, 232.485, -41.2695, 244.829, -60.5982, 212.94, -94.0317, 162.534, -119.107, 144.532, -135.824, 136.302, -149.928, 263.86, -236.646, 288.549, -240.826, 392.961, -164.033, 406.849, -145.749, 420.736, -154.108, 424.851, -148.361, 346.156, -102.39, 382.16, -74.703, 456.226, -110.748, 489.144, -112.316, 515.376, -103.957, 620.817, -38.1351, 494.802, 59.031, 386.275, -7.83597, 354.385, -35.5231, 324.553, -31.3439, 287.52, -20.3735, 198.024, 32.9111, 158.419, 28.7319, 122.415, 49.6279, 27.7747, 2.0896, 12.8587, 13.06, 85.3816, 60.5982, 63.2647, 73.1358, 21.0882, 54.8518, 8.7439, 81.4942, 23.66, 112.316, 31.8895, 123.286, 19.5452, 138.958, -2.57175, 131.644, -108.013, 198.511 )
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Woods"]
-polygon = PoolVector2Array( 713, 1012, 710, 961, 937, 867, 1041, 846, 1135, 798, 1314, 908, 1319, 942, 950, 1153 )
-
-[node name="Diablesse" parent="." instance=ExtResource( 4 )]
-position = Vector2( 199, 984 )
-
-[node name="Light2D" type="Light2D" parent="Diablesse"]
-texture = ExtResource( 9 )
-mode = 2
-
-[node name="Music" type="Node" parent="."]
-script = ExtResource( 6 )
-
-[node name="Ambience" type="AudioStreamPlayer" parent="Music"]
-
-[node name="Grass" type="AudioStreamPlayer" parent="Music"]
-
-[node name="Road" type="AudioStreamPlayer" parent="Music"]
-
-[node name="SFX" type="AudioStreamPlayer" parent="Music"]
-
-[node name="Button" type="Button" parent="Music"]
-margin_left = 25.0
-margin_top = 22.0
-margin_right = 59.0
-margin_bottom = 57.0
-toggle_mode = true
-text = "M"
-
-[connection signal="toggled" from="Music/Button" to="Music" method="set_pause"]
-
-[editable path="Path2D2/MovingObstacle"]
+[node name="Button" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0.266667 )
+margin_left = 632.0
+margin_top = 633.0
+margin_right = 1290.0
+margin_bottom = 942.0
+script = ExtResource( 1 )

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GoTo.gd" type="Script" id=1]
+[ext_resource path="res://assets/end_screen.png" type="Texture" id=2]
+[ext_resource path="res://assets/button.png" type="Texture" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+scale = Vector2( 2.67, 2.67 )
+texture = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0.266667 )
+margin_left = 657.0
+margin_top = 643.0
+margin_right = 1222.0
+margin_bottom = 898.0
+script = ExtResource( 1 )
+next_scene = "res://Main.tscn"
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 958, 807 )
+scale = Vector2( 2.28472, 2.28472 )
+texture = ExtResource( 3 )

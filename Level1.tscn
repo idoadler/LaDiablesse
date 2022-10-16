@@ -1,0 +1,178 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Target.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Diablesse.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Obstacle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/background01.png" type="Texture" id=4]
+[ext_resource path="res://assets/woman_2.png" type="Texture" id=5]
+[ext_resource path="res://assets/light.png" type="Texture" id=6]
+[ext_resource path="res://assets/texture_night_1.png" type="Texture" id=7]
+[ext_resource path="res://assets/texture_1.png" type="Texture" id=8]
+[ext_resource path="res://Woods.gd" type="Script" id=9]
+
+[sub_resource type="CanvasItemMaterial" id=3]
+light_mode = 2
+
+[sub_resource type="Curve2D" id=6]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 549, 1040, 0, 0, 0, 0, 628, 917, 0, 0, 0, 0, 536, 805, 0, 0, 0, 0, 365, 642, 0, 0, 0, 0, 416, 517, 0, 0, 0, 0, 545, 442, 0, 0, 0, 0, 806, 315, 0, 0, 0, 0, 1005, 205, 0, 0, 0, 0, 1134, 116, 0, 0, 0, 0, 1189, 38, 0, 0, 0, 0, 1397, 14, 0, 0, 0, 0, 1520, 57, 0, 0, 0, 0, 1645, 137, 0, 0, 0, 0, 1772, 326, 0, 0, 0, 0, 1571, 459, 0, 0, 0, 0, 1473, 487, 0, 0, 0, 0, 1367, 487, 0, 0, 0, 0, 1242, 529, 0, 0, 0, 0, 1168, 599, 0, 0, 0, 0, 1193, 741, 0, 0, 0, 0, 1308, 847, 0, 0, 0, 0, 1429, 928, 0, 0, 0, 0, 1575, 993 )
+}
+
+[sub_resource type="Curve2D" id=7]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -8, 358, 0, 0, 0, 0, 685, -113, 0, 0, 0, 0, 1012, 4, 0, 0, 0, 0, 1043, 116, 0, 0, 0, 0, 1590, 404, 0, 0, 0, 0, 1766, 565, 0, 0, 0, 0, 1452, 788, 0, 0, 0, 0, 1217, 656, 0, 0, 0, 0, 1037, 606, 0, 0, 0, 0, 863, 697, 0, 0, 0, 0, 594, 841, 0, 0, 0, 0, 664, 913 )
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 468.159, 181.891 )
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 109.041
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 973, 533 )
+scale = Vector2( 2.5, 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -382.4, -262.5, 369.2, -261.5, 369.2, 268, -387.2, 271, -386.8, -262.5, -427.195, -277.053, -421.246, 326.345, 448.157, 305.098, 421.812, -325.495, -436.543, -322.945, -427.195, -277.053 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 973, 533 )
+scale = Vector2( 2.5, 2 )
+texture = ExtResource( 4 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_right = 1935.0
+margin_bottom = 1093.0
+rect_scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+stretch_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource( 3 )
+margin_right = 1935.0
+margin_bottom = 1093.0
+rect_scale = Vector2( 3, 3 )
+texture = ExtResource( 8 )
+stretch_mode = 2
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 1731, 285 )
+rotation = 0.515589
+
+[node name="Target" parent="Node2D" instance=ExtResource( 1 )]
+scale = Vector2( 0.5, 0.5 )
+next_scene = "res://Level2.tscn"
+
+[node name="Path2D3" type="Path2D" parent="."]
+curve = SubResource( 6 )
+
+[node name="MovingObstacle" parent="Path2D3" instance=ExtResource( 3 )]
+position = Vector2( 549, 1040 )
+rotation = -0.999898
+scale = Vector2( 1, 1 )
+speed = 130
+
+[node name="Sprite" parent="Path2D3/MovingObstacle/KinematicBody2D" index="1"]
+texture = ExtResource( 5 )
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2( 27, 125 )
+curve = SubResource( 7 )
+
+[node name="MovingObstacle" parent="Path2D" instance=ExtResource( 3 )]
+position = Vector2( -8, 358 )
+rotation = -0.596942
+scale = Vector2( 1, 1 )
+
+[node name="Woods" type="Area2D" parent="."]
+visible = false
+script = ExtResource( 9 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Woods"]
+position = Vector2( 480, 730 )
+scale = Vector2( 1.94421, 1.91425 )
+polygon = PoolVector2Array( -238.657, 101.345, -99.7834, 10.448, -79.2095, 12.0152, -69.9512, -7.83597, -69.9512, -24.5527, -39.6047, -28.7319, 0.514343, -29.7767, 13.8874, -63.7326, 46.8056, -84.6285, 83.8386, -92.9869, 121.386, -97.1661, 162.534, -78.8821, 211.911, -48.0606, 232.485, -41.2695, 244.829, -60.5982, 212.94, -94.0317, 162.534, -119.107, 144.532, -135.824, 136.302, -149.928, 263.86, -236.646, 288.549, -240.826, 392.961, -164.033, 406.849, -145.749, 420.736, -154.108, 424.851, -148.361, 346.156, -102.39, 382.16, -74.703, 456.226, -110.748, 489.144, -112.316, 515.376, -103.957, 620.817, -38.1351, 494.802, 59.031, 386.275, -7.83597, 354.385, -35.5231, 324.553, -31.3439, 287.52, -20.3735, 198.024, 32.9111, 158.419, 28.7319, 122.415, 49.6279, 27.7747, 2.0896, 12.8587, 13.06, 85.3816, 60.5982, 63.2647, 73.1358, 21.0882, 54.8518, 8.7439, 81.4942, 23.66, 112.316, 31.8895, 123.286, 19.5452, 138.958, -2.57175, 131.644, -108.013, 198.511 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Woods"]
+polygon = PoolVector2Array( 713, 1012, 710, 961, 937, 867, 1041, 846, 1135, 798, 1314, 908, 1319, 942, 950, 1153 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Woods"]
+polygon = PoolVector2Array( 93, 481, 243, 600, 437, 472, 352, 385, 397, 358, 486, 430, 901, 192, 733, 83, 437, 287 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Woods"]
+position = Vector2( 170.247, 87.6101 )
+rotation = -0.56693
+scale = Vector2( 1, 1 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Woods"]
+position = Vector2( 2094, 798 )
+rotation = -0.56693
+scale = Vector2( 1, 1 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Woods"]
+position = Vector2( 1209, 1400 )
+rotation = -0.56693
+scale = Vector2( 1, 1 )
+shape = SubResource( 4 )
+
+[node name="Buildings" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buildings"]
+position = Vector2( 998, 437 )
+rotation = 0.92583
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Buildings"]
+position = Vector2( 273, 918 )
+rotation = 0.92583
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Buildings"]
+position = Vector2( 972, 986 )
+rotation = 0.92583
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Buildings"]
+position = Vector2( 1116, 922 )
+rotation = 0.92583
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Buildings"]
+position = Vector2( 1794, 928 )
+rotation = 0.92583
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Buildings"]
+position = Vector2( 254, 14 )
+rotation = 0.92583
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Buildings"]
+position = Vector2( 563, 252 )
+rotation = 0.92583
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Buildings"]
+position = Vector2( 1365, 189 )
+rotation = 0.92583
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Buildings"]
+position = Vector2( 1282, 156 )
+rotation = 0.92583
+shape = SubResource( 5 )
+
+[node name="Diablesse" parent="." instance=ExtResource( 2 )]
+position = Vector2( 56, 933 )
+
+[node name="Light2D" type="Light2D" parent="Diablesse"]
+texture = ExtResource( 6 )
+mode = 2
+
+[editable path="Path2D3/MovingObstacle"]

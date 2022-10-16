@@ -3,6 +3,7 @@ class_name Chaser
 
 onready var obstacle:Obstacle# = $"../MovingObstacle"
 onready var demon:Diablesse = $"../../../Diablesse"
+onready var music = $"/root/Music"
 var chasing = false
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +19,7 @@ func _process(delta):
 			var velocity = global_position.direction_to(demon.global_position) * obstacle.speed
 			velocity = move_and_slide(velocity)
 			if dist < 50:
+				music.end_level(0)
 				get_tree().reload_current_scene()
 	else:
 		if dist < demon.seen_distance:

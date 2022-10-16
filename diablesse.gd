@@ -1,12 +1,12 @@
 extends KinematicBody2D
 class_name Diablesse
 
-const SPEED = 350.0
+const SPEED = 250.0
 const JUMP_VELOCITY = -400.0
 export var SEEN_DISTANCES = [50.0, 80.0, 140.0, 200.0]
 const SEEN_REFERENCE = 230.0
 
-onready var music:Music = $"../Music"
+onready var music = $"/root/Music"
 onready var light = $"Light2D"
 
 var seen_distance = 230
