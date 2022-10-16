@@ -31,8 +31,8 @@ func _ready():
 	set_road_volume(0)
 	sfx_player.volume_db = linear2db(0.5)
 	set_play(true)
-
-func _process(delta):
+	
+func _process(delta):	
 	if on_grass and road_transition > 0:
 		road_transition -= delta
 		set_road_volume(road_transition)
@@ -70,12 +70,10 @@ func set_play(button_pressed):
 		music_position = 0
 
 func set_master_volume(value):
-	print("volue: " + str(value))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear2db(value))
 
 
 func set_pause(button_pressed):
-	print("pause: " + str(button_pressed))
 	if button_pressed:
 		paused = true
 		music_position = ambience_player.get_playback_position()
@@ -91,11 +89,10 @@ func set_pause(button_pressed):
 			road_player.play(music_position)
 
 func set_road_volume(value):
-	road_player.volume_db = linear2db(value)
+	road_player.volume_db = linear2db(clamp(value,0,1))
 
 func play_step():
 	if sfx_player.playing:
-		print("still playing, cancelled")
 		return
 	sfx_player.pitch_scale = rng.randf_range(0.5,2)
 	if on_grass:

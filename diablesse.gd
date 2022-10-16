@@ -22,7 +22,7 @@ func _physics_process(delta):
 	move_and_slide(velocity)
 	if velocity.length() > 1:
 		step_time += delta
-		if step_time > 30 / velocity.length():
+		if step_time > 50 / velocity.length():
 			music.play_step()
 			step_time = 0
 	else:
@@ -31,6 +31,6 @@ func _physics_process(delta):
 func set_area(woods:bool):
 	music.on_grass = woods
 	if woods:
-		speed_modifier = 0.3
+		speed_modifier = 0.6
 	else:
 		speed_modifier = 1
